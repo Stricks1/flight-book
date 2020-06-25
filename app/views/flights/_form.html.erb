@@ -9,9 +9,30 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div class="actions">
+  <% end %>  
+  <div class="plane_select padding-10">
+    <%= label_tag(:plane_id, "Plane/Model:") %>
+    <%= form.collection_select :plane_id, Plane.order(:name),:id, :nmodel, include_blank: false %>
+  </div>
+  <div class="double_select padding-10">
+    <div>
+      <%= label_tag(:dep_airport_id, "Departure Airport:") %>
+      <%= form.collection_select :dep_airport_id, Airport.order(:name),:id,:name, include_blank: false %>
+    </div>
+    <div>
+      <%= label_tag(:arr_airport_id, "Arrival Airport:") %>
+      <%= form.collection_select :arr_airport_id, Airport.order(:name),:id,:name, include_blank: false %>
+    </div>
+  </div> 
+  <div class="padding-10">
+    <%= label_tag(:dep_date, "Departure Date/Time:") %>
+    <%= form.datetime_select :dep_date %>
+  </div>
+  <div class="padding-10">
+    <%= label_tag(:arr_date, "Arrival Date/Time:") %>
+    <%= form.datetime_select :arr_date %>
+  </div>
+  <div class="actions padding-10">
     <%= form.submit %>
   </div>
 <% end %>
