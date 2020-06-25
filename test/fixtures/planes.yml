@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  model: 
+  aq_date: 2020-06-25
+
+two:
+  name: 
+  model: 
+  aq_date: 2020-06-25
