@@ -7,20 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+User.reset_pk_sequence
 Flight.destroy_all
+Flight.reset_pk_sequence
 PlaneBook.destroy_all
+PlaneBook.reset_pk_sequence
 Plane.destroy_all
+Plane.reset_pk_sequence
 Airport.destroy_all
+Airport.reset_pk_sequence
 
 
 User.create!([{
-    email: "g@mail.com",
+    email: "g@gmail.com",
     name: "Gabriel",
     username: "Stricks",
     password: 123456
   },
   {
-    email: "r@mail.com",
+    email: "r@gmail.com",
     name: "Rick",
     username: "Woohoo",
     password: 123456
@@ -89,6 +94,13 @@ Flight.create!([{
     arr_date: DateTime.new(2020, 8, 29, 11, 35, 0)
   },
   {
+    plane_id: 2,
+    dep_airport_id: 1,
+    arr_airport_id: 4,
+    dep_date: DateTime.new(2020, 7, 20, 12, 30, 0),
+    arr_date: DateTime.new(2020, 7, 20, 13, 35, 0)
+  },
+  {
     plane_id: 3,
     dep_airport_id: 3,
     arr_airport_id: 2,
@@ -101,11 +113,15 @@ p "Created #{Flight.count} flights"
 
 PlaneBook.create!([{
     user_id: 1,
-    flight_id: 1
+    flight_id: 1,
+    pass_name: "Joao",
+    pass_email: "j@gmail.com"
   },
   {
     user_id: 2,
-    flight_id: 1
+    flight_id: 1,
+    pass_name: "Rick",
+    pass_email: "r@gmail.com"
   }])
 
 p "Created #{PlaneBook.count} PlaneBooks"

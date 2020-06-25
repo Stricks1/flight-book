@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_06_25_182145) do
   create_table "plane_books", force: :cascade do |t|
     t.integer "user_id"
     t.integer "flight_id"
+    t.string "pass_name"
+    t.string "pass_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_plane_books_on_flight_id"

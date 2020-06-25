@@ -95,3 +95,18 @@ label {
 .padding-10 {
   padding: 10px 0;
 }
+
+.fly_info {
+  border: 1px solid black;
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.padding-l {
+  padding: 0 10px;
+}
+
+.center {
+  align-self: center
+}

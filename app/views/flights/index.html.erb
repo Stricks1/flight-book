@@ -1,22 +1,40 @@
 <h1>Choose your Flight</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= form_with(model: @flight, local: true, method: "get") do |form| %>
+  <div class="double_select padding-10">
+    <div>
+      <%= label_tag(:dep_airport_id, "Departure Airport:") %>
+      <%= form.collection_select :dep_airport_id, Airport.order(:name),:id,:name, include_blank: false %>
+    </div>
+    <div>
+      <%= label_tag(:arr_airport_id, "Arrival Airport:") %>
+      <%= form.collection_select :arr_airport_id, Airport.order(:name),:id,:name, include_blank: false %>
+    </div>
+  </div>
+  <div class="actions padding-10">
+    <%= form.submit "Search"%>
+  </div>
+<% end %>
 
-  <tbody>
-    <% @flights.each do |flight| %>
-      <tr>
-        <td><%= link_to 'Show', flight %></td>
-        <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
-        <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_with(model: @flight, local: true, method: "get") do |form| %>
+<% @flights.each do |flight| %>
+  <div class="fly_info">
+    <div class="padding-l">
+      <h4> Flying with <%= flight.plane.model %></h4>
+      <p> Departuring from <%= flight.dep_airport.location %> scheduled to <%= flight.dep_date %></p>
+      <p> Arriving <%= flight.dep_airport.location %> scheduled to <%= flight.arr_date %></p>
+    </div>
+    <div class="center padding-l">
+      <%= form.radio_button "booking", flight.id %> BOOK<br />
+    </div>
+  </div>
+<% end %>
+
+<div class="actions padding-10">
+  <%= form.submit "Book"%>
+</div>
+
+<% end %>
 
 <br>
 
