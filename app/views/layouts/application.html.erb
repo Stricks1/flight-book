@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+       <p class="notice" id="notice"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+       <p class="alert" id="alert"><%= alert %></p>
+    <% end %>
+    <% if user_signed_in? %>
+    <div>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
