@@ -1,0 +1,29 @@
+<h1>Bookings ordered from <%= current_user.name %> </h1>
+  <% last_id = "start" %>
+  <% @plane_books.each do |plane_book| %>
+    <% unless plane_book.flight_id == last_id %>
+      <% unless last_id == "start" %>
+        </div>
+        <br>
+      <% end %>
+      <div class="border-1 padding-l">
+      <h4> Flying with <%= plane_book.flight.plane.model %></h4>
+      <p> Departuring from <%= plane_book.flight.dep_airport.location %> scheduled to <%= plane_book.flight.dep_date %></p>
+      <p> Arriving <%= plane_book.flight.dep_airport.location %> scheduled to <%= plane_book.flight.arr_date %></p>
+      <h2> Passengers Booked For <%= current_user.name %></h2>
+      <% last_id = plane_book.flight_id %>
+    <% end %>
+    <div>
+      <h4>PASSENGER</h4>
+      <p>Name:<%= plane_book.pass_name %></p>
+      <p>Email:<%= plane_book.pass_email %></p>
+      <p><%= link_to 'Edit', edit_plane_book_path(plane_book) %></p>
+      <p><%= link_to 'Destroy', plane_book, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  <% end %>
+<% if @plane_books %>
+</div>
+<% end %>
+<br>
+
+<%= link_to 'New Plane Book', new_plane_book_path %>

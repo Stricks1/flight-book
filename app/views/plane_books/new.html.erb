@@ -1,0 +1,26 @@
+<h1>New Plane Book</h1>
+
+<div class="fly_info">
+  <div class="padding-l">
+    <h4> Flying with <%= @flight.plane.model %></h4>
+    <p> Departuring from <%= @flight.dep_airport.location %> scheduled to <%= @flight.dep_date %></p>
+    <p> Arriving <%= @flight.dep_airport.location %> scheduled to <%= @flight.arr_date %></p>
+  </div>
+</div>
+
+<% @bookings.each do |plane_book| %>
+  <br>
+  <div class="fly_info">
+   <div class="padding-l">
+    <h2> PASSENGER </h2>
+    <p>Name: <%= plane_book.pass_name %></p>
+    <p>Email: <%= plane_book.pass_email %></p>
+   </div>
+  </div>
+<% end %>
+
+
+
+<%= render 'form', plane_book: @plane_book %>
+
+<%= link_to 'Back', flights_path %>

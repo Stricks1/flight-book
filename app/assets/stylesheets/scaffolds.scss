@@ -103,10 +103,18 @@ label {
   justify-content: space-between;
 }
 
+.border-1 {
+  border: 1px solid black;
+}
+
 .padding-l {
   padding: 0 10px;
 }
 
 .center {
   align-self: center
+}
+
+.hidden {
+  visibility: hidden;
 }

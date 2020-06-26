@@ -1,3 +1,4 @@
+
 <div class="fly_info">
   <div class="padding-l">
     <h4> Flying with <%= @flight.plane.model %></h4>
@@ -5,3 +6,16 @@
     <p> Arriving <%= @flight.dep_airport.location %> scheduled to <%= @flight.arr_date %></p>
   </div>
 </div>
+
+<p>
+  <strong>Pass name:</strong>
+  <%= @plane_book.pass_name %>
+</p>
+
+<p>
+  <strong>Pass email:</strong>
+  <%= @plane_book.pass_email %>
+</p>
+
+<%= link_to 'Edit', edit_plane_book_path(@plane_book) %> |
+<%= link_to 'Back', plane_books_path %>

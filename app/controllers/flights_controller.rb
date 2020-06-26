@@ -6,22 +6,20 @@ class FlightsController < ApplicationController
   # GET /flights.json
   def index
     if params[:dep_airport_id] && params[:arr_airport_id]
-      @flights = Flight.find_by_sql("SELECT * FROM flights WHERE dep_airport_id = #{params[:dep_airport_id]} AND arr_airport_id = #{params[:arr_airport_id]}")
+      @fli = Flight.new   
+      @flights = @fli.flights_search(params[:dep_airport_id],params[:arr_airport_id])
     else
       @flights = []
     end
     if params[:booking]
-      redirect_to book_flight_url(params[:booking])
+      flash[:f_id] = params[:booking]
+      redirect_to new_plane_book_url
     end
   end
 
   # GET /flights/1
   # GET /flights/1.json
   def show
-  end
-
-  def book
-    @flight = Flight.find(params[:id])
   end
 
   # GET /flights/new

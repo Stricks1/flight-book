@@ -30,9 +30,11 @@
   </div>
 <% end %>
 
+<% unless @flights.empty? %>
 <div class="actions padding-10">
   <%= form.submit "Book"%>
 </div>
+<% end %>
 
 <% end %>
 
